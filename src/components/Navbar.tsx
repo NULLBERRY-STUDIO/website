@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Grape, Moon, Sun } from 'lucide-react';
+import { Grape, Moon, Sun, Github } from 'lucide-react';
 import { useTheme } from '@/hooks/use-theme';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -38,7 +37,7 @@ export const Navbar = () => {
             <div className="relative w-8 h-8 flex items-center justify-center overflow-hidden">
               <Grape className="w-7 h-7 text-berry-500 transform transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <span className="text-lg font-medium">
+            <span className="text-lg font-medium hidden sm:inline-flex">
               <span className="text-foreground">Nullberry</span>
               <span className="text-muted-foreground ml-1">Studio</span>
             </span>
@@ -65,14 +64,24 @@ export const Navbar = () => {
               </Tooltip>
             </TooltipProvider>
             
-            <a
-              href="https://github.com/NULLBERRY-STUDIO"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full text-sm text-foreground bg-secondary hover:bg-secondary/80 transition-colors duration-200"
-            >
-              GitHub
-            </a>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <a
+                    href="https://github.com/NULLBERRY-STUDIO"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm:px-4 sm:py-2 sm:rounded-full sm:text-sm sm:text-foreground sm:bg-secondary sm:hover:bg-secondary/80 transition-colors duration-200 flex items-center justify-center"
+                  >
+                    <Github className="h-5 w-5 sm:hidden" />
+                    <span className="hidden sm:inline">GitHub</span>
+                  </a>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Visit our GitHub</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       </div>
