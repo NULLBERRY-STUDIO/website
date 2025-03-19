@@ -29,8 +29,8 @@ const features = [
     color: 'bg-emerald-100 text-emerald-500 dark:bg-emerald-900/20 dark:text-emerald-400',
   },
   {
-    title: 'Void-Inspired Design',
-    description: 'Minimalist, distraction-free interfaces that let you focus on what matters.',
+    title: 'Minimalist Design',
+    description: 'Distraction-free interfaces that let you focus on what matters.',
     icon: Lightbulb,
     color: 'bg-purple-100 text-purple-500 dark:bg-purple-900/20 dark:text-purple-400',
   },
