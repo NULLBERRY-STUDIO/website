@@ -1,6 +1,6 @@
 # Nullberry: Friendly Void Tools
 
-![Nullberry](https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742396441/62bb1887-188d-4e72-bcf1-577132d3f3f5_lxlica.webp)
+<img src="https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742396441/62bb1887-188d-4e72-bcf1-577132d3f3f5_lxlica.webp" width="200">
 
 ## About Nullberry
 
