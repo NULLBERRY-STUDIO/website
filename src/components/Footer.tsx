@@ -30,7 +30,6 @@ export const Footer = () => {
               {[
                 { name: 'About', hash: '#about' },
                 { name: 'Projects', hash: '#projects' },
-                { name: 'Mission', hash: '#mission' },
               ].map((item) => (
                 <li key={item.name}>
                   <a
