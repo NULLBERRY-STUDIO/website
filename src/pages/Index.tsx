@@ -54,7 +54,6 @@ const Index = () => {
         <main>
           <Hero />
           <Features />
-          <Mission />
           <Projects />
           <Team />
           <Mission />
