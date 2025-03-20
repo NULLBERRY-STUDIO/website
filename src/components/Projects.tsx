@@ -12,7 +12,14 @@ const projects = [
     description: 'TypeFlow helps you fine-tune your macOS key repeat settings without repeatedly logging out to test changes. This clean, minimal web application provides an interactive environment to test different key repeat speeds and delays, then generates the terminal commands needed to apply those settings to your system.',
     link: 'https://typeflow.nullberry.org',
     image: 'https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742349175/5f23fb84262d4fce8ed9c6b3c8dd3b7f_xj7k2m.webp',
-    status: 'Active',
+    status: 'In Development',
+  },
+  {
+    title: 'Speedkarte',
+    description: 'Speedkarte is an interactive web application that helps users understand the consequences of speeding in Germany. The calculator provides real-time feedback on potential fines, penalty points, and license suspension risks based on German traffic laws.',
+    link: 'https://speedkarte.nullberry.org',
+    image: 'https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742428506/0d97b6b9d76d4e8c8cf36c8e3496aabc_qmxvcv.webp',
+    status: 'In Development',
   },
 ];
 
