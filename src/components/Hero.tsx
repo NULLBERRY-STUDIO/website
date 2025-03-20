@@ -54,7 +54,7 @@ export const Hero = () => {
           <h1 className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 leading-tight tracking-tight">
             <span className="text-gradient">Nullberry Studio</span>
             <span className="block text-xl md:text-3xl font-medium text-muted-foreground mt-2">
-              Handcrafted Oddities for Everyday Problems
+            Unconventional Tools for Practical Needs
             </span>
           </h1>
           

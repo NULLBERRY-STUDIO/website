@@ -16,29 +16,21 @@ import {
 
 const testimonials = [
   {
-    text: "It's refreshing to use software that's truly built for users, not shareholders. The transparency and lack of dark patterns makes me trust in a way I can't trust most apps these days.",
-    author: "Sarah Chen",
+    text: "no ads no signups! I'm glad to see a company that puts user needs first.",
+    author: "Sarah Johnson",
     title: "Digital Rights Advocate",
-    rating: 5,
+    rating: 4,
     avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     icon: Heart
   },
   {
     text: "As someone who values digital freedom, I appreciate that Nullberry is built with a non-profit mindset. It's powerful, respects my privacy, and I know it won't suddenly pivot to a subscription model to please only investors.",
-    author: "Marcus Lee",
+    author: "Marcus Madsen",
     title: "Open Source Contributor",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
     icon: Shield
   },
-  {
-    text: "This proves that free software can be both beautiful and functional. It's developed with genuine care for the craft rather than quarterly growth targets, and that philosophy shines through in every detail.",
-    author: "Elena Rivera",
-    title: "Open Source Contributor",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    icon: Heart
-  }
 ];
 
 export const Testimonials = () => {
