@@ -52,7 +52,7 @@ export const Hero = () => {
           </div>
           
           <h1 className="text-4xl md:text-7xl font-bold mb-6 md:mb-8 leading-tight tracking-tight">
-            <span className="text-gradient">Nullberry Studio</span>
+            <span className="text-gradient">Nullberry</span>
             <span className="block text-xl md:text-3xl font-medium text-muted-foreground mt-2">
             Unconventional Tools for Practical Needs
             </span>
