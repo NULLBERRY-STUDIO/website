@@ -8,6 +8,13 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const projects = [
   {
+    title: 'Budget Buddy',
+    description: 'A modern web application that helps users calculate affordable rent in Berlin based on their income and expenses. Features include a rent calculator, expense breakdown, neighborhood finder, interactive map, and multilingual support in 9 languages.',
+    link: 'https://budgetbuddy.nullberry.org',
+    image: 'https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742759621/fffkfjgjgjririeo83930848393.png',
+    status: 'In Development',
+  },
+  {
     title: 'TypeFlow',
     description: 'TypeFlow helps you fine-tune your macOS key repeat settings without repeatedly logging out to test changes. This clean, minimal web application provides an interactive environment to test different key repeat speeds and delays, then generates the terminal commands needed to apply those settings to your system.',
     link: 'https://typeflow.nullberry.org',
