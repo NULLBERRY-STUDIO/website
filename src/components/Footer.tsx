@@ -65,8 +65,8 @@ export const Footer = () => {
                         <h3 className="font-medium">Vertreten durch:</h3>
                         <p className="mt-1">
                           Waleed Hussain<br />
-                          Markgrafenstr. 56,<br />
-                          10117 Berlin
+                        <br />
+
                         </p>
                       </div>
                       
