@@ -54,11 +54,6 @@ export const Footer = () => {
                     <div className="mt-4 text-sm space-y-4">
                       <div>
                         <h3 className="font-medium">Angaben gemäß § 5 TMG</h3>
-                        <p className="mt-1">
-                          Nullberry Studio<br />
-                          Markgrafenstr. 56,<br />
-                          10117 Berlin
-                        </p>
                       </div>
                       
                       <div>
