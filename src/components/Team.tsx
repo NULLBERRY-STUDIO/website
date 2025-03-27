@@ -15,7 +15,7 @@ const team = [
     name: "Waleed Hussain",
     role: "Founder",
     bio: "As a three-time founder with over 15 years in software engineering, Waleed has successfully navigated the full spectrum of startup challenges - from initial concept to successful acquisition.",
-    avatar:
+    imageUrl:
       "https://res.cloudinary.com/dm9gvqa1t/image/upload/t_Square/v1737252681/waleed.de/bn9y9x71i1gznmlrpe7n.jpg",
     socials: {
       bluesky: "https://bsky.app/profile/waleedcodes.bsky.social",
@@ -27,21 +27,19 @@ const team = [
     name: "Umer Khan",
     role: "AI/ML Engineer",
     bio: "When Umer isn't teaching computers to understand human emotions through NLP models, he's busy convincing our servers that millions of news articles aren't too heavy to lift.",
-    avatar:
-      "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742339630/IMG_0870_2_prtxpo.jpg",
+    imageUrl:
+      "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742861876/IMG_0289_mvqnkh.jpg",
     socials: {
       linkedin: "https://www.linkedin.com/in/umerkhan261/",
     },
   },
-
   {
     name: "Zaheer Ahmed",
-    role: "Principal Backned Engineer",
+    role: "Principal Backend Engineer",
     bio: "By day, Zaheer is our Senior Java Engineer with 15 years of battle scars. By night, he's still debugging that one persistent issue from 2012.",
-    avatar:
+    imageUrl:
       "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742340074/08636717-C100-4EEA-80A1-6586871D4A84-2114-00000_tyadir.jpg",
     socials: {
-
       linkedin: "https://www.linkedin.com/in/ahmedzaheerdev/",
     },
   },
@@ -61,54 +59,48 @@ export const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {team.map((member, index) => (
-            <motion.div
-              key={index}
+        <ul
+          role="list"
+          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none"
+        >
+          {team.map((person) => (
+            <motion.li
+              key={person.name}
+              className="flex flex-col gap-6 xl:flex-row"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="group h-full"
             >
-              <Card className="h-full overflow-hidden hover:shadow-md transition-shadow duration-300 bg-card/60 backdrop-blur-sm border-border/60">
-                <div className="relative overflow-hidden pt-4">
-                  <div className="w-24 h-24 rounded-full mx-auto overflow-hidden border-2 border-berry-400/30 p-1 bg-background/80">
-                    <img
-                      src={member.avatar}
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-full transition-all duration-500 grayscale group-hover:grayscale-0"
-                    />
-                  </div>
-                  <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-berry-500/10 to-transparent" />
-                </div>
-
-                <CardHeader className="pt-4 pb-2 text-center">
-                  <CardTitle className="text-lg font-medium">
-                    {member.name}
-                  </CardTitle>
-                  <CardDescription className="text-berry-400 flex items-center justify-center gap-1">
-                    <Briefcase className="h-3 w-3" /> {member.role}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="text-center px-6 py-2">
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
-                </CardContent>
-
-                <CardFooter className="flex justify-center space-x-4 pb-6">
-     
+              <img
+                alt={person.name}
+                src={person.imageUrl}
+                className="aspect-[4/5] w-52 flex-none rounded-2xl object-cover"
+              />
+              <div className="flex-auto">
+                <h3 className="text-lg/8 font-semibold tracking-tight text-gray-900 dark:text-white">
+                  {person.name}
+                </h3>
+                <p className="text-base/7 text-gray-600 dark:text-gray-300">
+                  {person.role}
+                </p>
+                <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-300">
+                  {person.bio}
+                </p>
+                <div className="mt-6">
                   <a
-                    href={member.socials.linkedin}
-                    className="text-muted-foreground hover:text-berry-400 transition-colors p-2 rounded-full hover:bg-berry-400/10"
+                    href={person.socials.linkedin}
+                    className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-5 h-5" />
                   </a>
-                </CardFooter>
-              </Card>
-            </motion.div>
+                </div>
+              </div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

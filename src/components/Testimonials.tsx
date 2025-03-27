@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, MessageCircle, User, Heart, Shield } from 'lucide-react';
 import {
@@ -14,103 +15,163 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
+const featuredTestimonial = {
+  body: "As someone who values digital freedom, I appreciate that Nullberry is built with a non-profit mindset. It's powerful, respects my privacy, and I know it won't suddenly pivot to a subscription model to please only investors.",
+  author: {
+    name: "Leonard Eichhorn",
+    handle: "Elephant HR",
+    imageUrl: "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742867370/sm_yxtlcw.png",
+  }
+
+}
+
 const testimonials = [
-  {
-    text: "no ads no signups! I'm glad to see a company that puts user needs first.",
-    author: "Sarah Johnson",
-    title: "Digital Rights Advocate",
-    rating: 4,
-    avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    icon: Heart
-  },
-  {
-    text: "As someone who values digital freedom, I appreciate that Nullberry is built with a non-profit mindset. It's powerful, respects my privacy, and I know it won't suddenly pivot to a subscription model to please only investors.",
-    author: "Marcus Madsen",
-    title: "Open Source Contributor",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    icon: Shield
-  },
-];
+  [
+    [
+      {
+        body: "No ads no signups! I'm glad to see a company that puts user needs first.",
+        author: {
+          name: "Mohamed Hamzé",
+          handle: "Bernstein Group",
+          imageUrl: "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742869800/1715811575931_nrzzxr.jpg",
+        },
+      },
+    ],
+    [
+      {
+        body: "I've been looking for software that respects my privacy and doesn't try to monetize my data. Nullberry delivers exactly that.",
+        author: {
+          name: "Mats Hommerich",
+          handle: "Elephant HR",
+          imageUrl: "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742869278/1528896680143_d8xyw2.jpg",
+        },
+      },
+    ],
+  ],
+  [
+    [
+      {
+        body: "Finally, software that doesn't try to lock me into an ecosystem or collect my data. This is how all software should be built.",
+        author: {
+          name: "Urooj Khan",
+          handle: "HR Generalist",
+          imageUrl: "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742868537/1548877991807_pj39vc.jpg",
+        },
+      },
+    ],
+
+    [
+      {
+        body: "🚀🚀🚀",
+        author: {
+          name: "Yesha Karmeli",
+          handle: "Ory Berlin",
+          imageUrl: "https://res.cloudinary.com/dm9gvqa1t/image/upload/v1742869007/01_Yesha_Karmeli_Heilpraktiker1_q8msgy.jpg",
+        },
+      },
+    ],
+
+
+
+
+
+
+  ],
+]
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export const Testimonials = () => {
   return (
-    <section className="py-24 bg-neutral-200 dark:bg-neutral-900 relative" id="testimonials">
-      <div className="container px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Community Voices</h2>
-          <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            What people value about our non-profit approach to software.
+    <section className="relative isolate bg-neutral-200 dark:bg-neutral-900 pb-32 pt-24 sm:pt-32" id="testimonials">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
+      >
+        <div
+          style={{
+            clipPath:
+              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+          }}
+          className="ml-[max(50%,38rem)] aspect-[1313/771] w-[82.0625rem] bg-gradient-to-tr from-berry-400 to-berry-600"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 flex transform-gpu overflow-hidden pt-32 opacity-25 blur-3xl sm:pt-40 xl:justify-end"
+      >
+        <div
+          style={{
+            clipPath:
+              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+          }}
+          className="ml-[-22rem] aspect-[1313/771] w-[82.0625rem] flex-none origin-top-right rotate-[30deg] bg-gradient-to-tr from-berry-400 to-berry-600 xl:ml-0 xl:mr-[calc(50%-12rem)]"
+        />
+      </div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-base/7 font-semibold text-berry-500 dark:text-berry-400">Community Voices</h2>
+          <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            What people value about our approach
           </p>
         </div>
-        
-        <div className="max-w-5xl mx-auto">
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pl-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="h-full"
-                  >
-                    <Card className="h-full bg-neutral-100 dark:bg-neutral-800 border border-gray-200 dark:border-gray-900 overflow-hidden rounded-lg shadow-md">
-                      <div className="absolute top-0 inset-x-0 h-1 bg-berry-400/20"></div>
-                      
-                      <CardHeader className="pt-6 pb-0">
-                        <div className="flex items-center justify-between">
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              <Star 
-                                key={i} 
-                                className={`w-4 h-4 ${i < testimonial.rating ? 'text-berry-500 dark:text-berry-400 fill-berry-500 dark:fill-berry-400' : 'text-gray-300 dark:text-gray-700'}`} 
-                              />
-                            ))}
-                          </div>
-                          <div className="p-1.5 rounded-full bg-berry-100 dark:bg-berry-900/50">
-                            <testimonial.icon className="w-4 h-4 text-berry-600 dark:text-berry-400" />
-                          </div>
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-800 dark:text-gray-200 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+          <figure className="rounded-2xl bg-neutral-100 dark:bg-neutral-800 shadow-lg ring-1 ring-gray-200 dark:ring-gray-900 sm:col-span-2 xl:col-start-2 xl:row-end-1">
+            <blockquote className="p-6 text-lg font-semibold tracking-tight text-gray-900 dark:text-white sm:p-12 sm:text-xl/8">
+              <p>{`"${featuredTestimonial.body}"`}</p>
+            </blockquote>
+            <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-200 dark:border-gray-900 px-6 py-4 sm:flex-nowrap">
+              <img
+                alt=""
+                src={featuredTestimonial.author.imageUrl}
+                className="size-10 flex-none rounded-full bg-neutral-50 dark:bg-neutral-700"
+              />
+              <div className="flex-auto">
+                <div className="font-semibold text-gray-900 dark:text-white">{featuredTestimonial.author.name}</div>
+                <div className="text-gray-600 dark:text-gray-400">{`@${featuredTestimonial.author.handle}`}</div>
+              </div>
+            </figcaption>
+          </figure>
+          {testimonials.map((columnGroup, columnGroupIdx) => (
+            <div key={columnGroupIdx} className="space-y-8 xl:contents xl:space-y-0">
+              {columnGroup.map((column, columnIdx) => (
+                <div
+                  key={columnIdx}
+                  className={classNames(
+                    (columnGroupIdx === 0 && columnIdx === 0) ||
+                      (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1)
+                      ? 'xl:row-span-2'
+                      : 'xl:row-start-1',
+                    'space-y-8',
+                  )}
+                >
+                  {column.map((testimonial) => (
+                    <figure
+                      key={testimonial.author.handle}
+                      className="rounded-2xl bg-neutral-100 dark:bg-neutral-800 p-6 shadow-lg ring-1 ring-gray-200 dark:ring-gray-900"
+                    >
+                      <blockquote className="text-gray-800 dark:text-gray-200">
+                        <p>{`"${testimonial.body}"`}</p>
+                      </blockquote>
+                      <figcaption className="mt-6 flex items-center gap-x-4">
+                        <img 
+                          alt="" 
+                          src={testimonial.author.imageUrl} 
+                          className="size-10 rounded-full bg-neutral-50 dark:bg-neutral-700" 
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-900 dark:text-white">{testimonial.author.name}</div>
+                          <div className="text-gray-600 dark:text-gray-400">{`@${testimonial.author.handle}`}</div>
                         </div>
-                      </CardHeader>
-                      
-                      <CardContent className="pt-4 relative">
-                        <div className="absolute right-0 top-0 opacity-10">
-                          <MessageCircle className="h-20 w-20 -rotate-12 text-berry-400" />
-                        </div>
-                        <p className="text-gray-800 dark:text-gray-200 mb-6 relative z-10">"{testimonial.text}"</p>
-                      </CardContent>
-                      
-                      <CardFooter className="flex items-center border-t border-gray-200 dark:border-gray-900 pt-4 mt-auto">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 dark:border-gray-900">
-                            <img 
-                              src={testimonial.avatar} 
-                              alt={testimonial.author}
-                              className="w-full h-full object-cover" 
-                            />
-                          </div>
-                          <div>
-                            <h4 className="text-gray-900 dark:text-white font-medium text-sm">{testimonial.author}</h4>
-                            <p className="text-gray-600 dark:text-gray-400 text-xs">{testimonial.title}</p>
-                          </div>
-                        </div>
-                      </CardFooter>
-                    </Card>
-                  </motion.div>
-                </CarouselItem>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-1 bg-neutral-50 dark:bg-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 border-gray-200 dark:border-gray-900 text-gray-800 dark:text-gray-200" />
-            <CarouselNext className="right-1 bg-neutral-50 dark:bg-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 border-gray-200 dark:border-gray-900 text-gray-800 dark:text-gray-200" />
-          </Carousel>
+            </div>
+          ))}
         </div>
       </div>
     </section>
