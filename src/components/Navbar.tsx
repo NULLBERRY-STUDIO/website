@@ -38,8 +38,6 @@ export const Navbar = () => {
               <Grape className="w-7 h-7 text-berry-500 transform transition-transform duration-300 group-hover:scale-110" />
             </div>
             <span className="text-lg font-medium hidden sm:inline-flex">
-              <span className="text-foreground">Nullberry</span>
-              <span className="text-muted-foreground ml-1">Studio</span>
             </span>
           </Link>
 
