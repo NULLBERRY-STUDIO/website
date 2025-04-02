@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '@/components/Hero';
@@ -9,6 +8,7 @@ import Team from '@/components/Team';
 import Testimonials from '@/components/Testimonials';
 import Mission from '@/components/Mission';
 import Footer from '@/components/Footer';
+import { isFeatureEnabled } from '@/hooks/use-feature-flags';
 
 const Index = () => {
   useEffect(() => {
@@ -42,6 +42,9 @@ const Index = () => {
     };
   }, []);
 
+  // Check if testimonials feature is enabled
+  const showTestimonials = isFeatureEnabled('showTestimonials');
+
   return (
     <AnimatePresence>
       <motion.div
@@ -57,7 +60,7 @@ const Index = () => {
           <Projects />
           <Team />
           <Mission />
-          <Testimonials />
+          {showTestimonials && <Testimonials />}
         </main>
         <Footer />
       </motion.div>
