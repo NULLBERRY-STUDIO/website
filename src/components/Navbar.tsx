@@ -157,26 +157,26 @@ export const Navbar = () => {
           {isOpen && (
             <motion.div
               ref={navRef}
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
+              initial={{ opacity: 0, y: '-100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '-100%' }}
               transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-0 top-0 z-40 w-full h-full bg-black bg-opacity-50 dark:bg-opacity-70 md:hidden"
+              className="fixed inset-x-0 top-0 z-40 pt-20 pb-6 md:hidden"
             >
-              <div className="container mx-auto px-4 py-24 h-full flex flex-col">
-                <div className="w-full h-full bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow-lg p-6">
-                  <nav className="flex flex-col space-y-8 items-center text-center mt-8">
+              <div className="container mx-auto px-4">
+                <div className="bg-neutral-100/95 dark:bg-neutral-800/95 backdrop-blur-md rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-700 p-6">
+                  <nav className="flex flex-col space-y-5 items-center text-center">
                     {navItems.map((item, index) => (
                       <motion.div
                         key={item.name}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 + 0.1 }}
+                        transition={{ delay: index * 0.05 + 0.1 }}
                       >
                         <a
                           href={item.url}
                           onClick={() => setIsOpen(false)}
-                          className="text-2xl font-medium text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
+                          className="text-lg font-medium text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
                         >
                           {item.name}
                         </a>
@@ -185,20 +185,20 @@ export const Navbar = () => {
                   </nav>
 
                   <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="mt-auto mb-12 flex flex-col items-center space-y-6"
+                    transition={{ delay: 0.3 }}
+                    className="mt-6 flex flex-col items-center space-y-4"
                   >
                     <a
-                      href="https://github.com/nullberry"
+                      href="https://github.com/NULLBERRY-STUDIO/website"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50 text-gray-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      <Github className="h-5 w-5" />
-                      <span>GitHub</span>
+                      <Github className="h-4 w-4" />
+                      <span className="text-sm font-medium">GitHub</span>
                     </a>
 
                     <div className="text-sm text-gray-600 dark:text-gray-400">
