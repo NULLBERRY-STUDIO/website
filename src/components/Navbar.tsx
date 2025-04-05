@@ -116,7 +116,7 @@ export const Navbar = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://github.com/nullberry"
+                href="https://github.com/NULLBERRY-STUDIO/website"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:flex items-center space-x-2 px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-gray-900 dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"

@@ -14,7 +14,7 @@ const navigation = {
     { name: 'Team', href: '#team' },
   ],
   resources: [
-    { name: 'Source Code', href: 'https://github.com/nullberry' },
+    { name: 'Source Code', href: 'https://github.com/NULLBERRY-STUDIO/website' },
   ],
   company: [
     { name: 'About', href: '#about' },
@@ -27,7 +27,7 @@ const navigation = {
   social: [
     {
       name: 'GitHub',
-      href: 'https://github.com/nullberry',
+      href: 'https://github.com/NULLBERRY-STUDIO/website',
       icon: (props) => (
         <Github className="h-5 w-5" {...props} />
       ),
