@@ -4,9 +4,18 @@ import {
   Card,
   CardContent,
 } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Badge } from "@/components/ui/badge";
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  link: string;
+  image: string;
+  status: string;
+}
+
+const projects: Project[] = [
   {
     title: 'Budget Buddy',
     subtitle: 'Financial Planning',
@@ -41,145 +50,105 @@ const projects = [
   },
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export const Projects = () => {
   return (
     <section className="bg-neutral-200 dark:bg-neutral-900 py-24 sm:py-32" id="projects">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="text-base/7 font-semibold text-berry-500 dark:text-berry-400">Our Projects</h2>
-        <p className="mt-2 max-w-lg text-pretty text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-          Tools we're building because we want them to exist
-        </p>
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-          <motion.div 
-            className="flex p-px lg:col-span-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <a href={projects[0].link} className="w-full group">
-              <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800 ring-1 ring-gray-200 dark:ring-gray-900 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem] w-full h-full flex flex-col">
-                <div className="h-80 overflow-hidden">
-                  <img
-                    alt={projects[0].title}
-                    src={projects[0].image}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-10 flex-1 flex flex-col">
-                  <h3 className="text-sm/4 font-semibold text-gray-600 dark:text-gray-400">{projects[0].subtitle}</h3>
-                  <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">{projects[0].title}</p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 flex-1">
-                    {projects[0].description.split('.')[0] + '.'}
-                  </p>
-                  <div className="mt-4 inline-flex items-center text-sm font-medium text-berry-500 dark:text-berry-400 group-hover:text-berry-600 dark:group-hover:text-berry-300 transition-colors">
-                    Learn more
-                    <ArrowUpRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </a>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="max-w-lg"
+        >
+          <h2 className="text-base/7 font-semibold text-berry-500 dark:text-berry-400">Our Projects</h2>
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            Tools we're building because we want them to exist
+          </p>
+        </motion.div>
+        
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:mt-16 lg:grid-cols-12">
+          <ProjectCard 
+            project={projects[0]} 
+            className="lg:col-span-8"
+            cornerRadius="rounded-3xl lg:rounded-3xl"
+            index={0}
+          />
           
-          <motion.div 
-            className="flex p-px lg:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <a href={projects[1].link} className="w-full group">
-              <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800 ring-1 ring-gray-200 dark:ring-gray-900 lg:rounded-tr-[2rem] w-full h-full flex flex-col">
-                <div className="h-80 overflow-hidden">
-                  <img
-                    alt={projects[1].title}
-                    src={projects[1].image}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-10 flex-1 flex flex-col">
-                  <h3 className="text-sm/4 font-semibold text-gray-600 dark:text-gray-400">{projects[1].subtitle}</h3>
-                  <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">{projects[1].title}</p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 flex-1">
-                    {projects[1].description.split('.')[0] + '.'}
-                  </p>
-                  <div className="mt-4 inline-flex items-center text-sm font-medium text-berry-500 dark:text-berry-400 group-hover:text-berry-600 dark:group-hover:text-berry-300 transition-colors">
-                    Learn more
-                    <ArrowUpRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </a>
-          </motion.div>
+          <ProjectCard 
+            project={projects[1]} 
+            className="lg:col-span-4"
+            cornerRadius="rounded-3xl lg:rounded-3xl"
+            index={1}
+          />
           
-          <motion.div 
-            className="flex p-px lg:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <a href={projects[2].link} className="w-full group">
-              <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800 ring-1 ring-gray-200 dark:ring-gray-900 lg:rounded-bl-[2rem] w-full h-full flex flex-col">
-                <div className="h-80 overflow-hidden">
-                  <img
-                    alt={projects[2].title}
-                    src={projects[2].image}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-10 flex-1 flex flex-col">
-                  <h3 className="text-sm/4 font-semibold text-gray-600 dark:text-gray-400">{projects[2].subtitle}</h3>
-                  <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">{projects[2].title}</p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 flex-1">
-                    {projects[2].description.split('.')[0] + '.'}
-                  </p>
-                  <div className="mt-4 inline-flex items-center text-sm font-medium text-berry-500 dark:text-berry-400 group-hover:text-berry-600 dark:group-hover:text-berry-300 transition-colors">
-                    Learn more
-                    <ArrowUpRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </a>
-          </motion.div>
+          <ProjectCard 
+            project={projects[2]} 
+            className="lg:col-span-4"
+            cornerRadius="rounded-3xl lg:rounded-3xl"
+            index={2}
+          />
           
-          <motion.div 
-            className="flex p-px lg:col-span-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <a href={projects[3].link} className="w-full group">
-              <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-800 ring-1 ring-gray-200 dark:ring-gray-900 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem] w-full h-full flex flex-col">
-                <div className="h-80 overflow-hidden">
-                  <img
-                    alt={projects[3].title}
-                    src={projects[3].image}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-10 flex-1 flex flex-col">
-                  <h3 className="text-sm/4 font-semibold text-gray-600 dark:text-gray-400">{projects[3].subtitle}</h3>
-                  <p className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">{projects[3].title}</p>
-                  <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 flex-1">
-                    {projects[3].description.split('.')[0] + '.'}
-                  </p>
-                  <div className="mt-4 inline-flex items-center text-sm font-medium text-berry-500 dark:text-berry-400 group-hover:text-berry-600 dark:group-hover:text-berry-300 transition-colors">
-                    Learn more
-                    <ArrowUpRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </a>
-          </motion.div>
+          <ProjectCard 
+            project={projects[3]} 
+            className="lg:col-span-8"
+            cornerRadius="rounded-3xl lg:rounded-3xl"
+            index={3}
+          />
         </div>
       </div>
     </section>
+  );
+};
+
+interface ProjectCardProps {
+  project: Project;
+  className?: string;
+  cornerRadius?: string;
+  index: number;
+}
+
+const ProjectCard = ({ project, className, cornerRadius, index }: ProjectCardProps) => {
+  return (
+    <motion.div 
+      className={`flex ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
+      viewport={{ once: true }}
+    >
+      <a href={project.link} className="w-full block group">
+        <Card className={`group overflow-hidden bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 ${cornerRadius} w-full h-full shadow-sm hover:shadow-md transition-shadow duration-300`}>
+          <div className="relative h-[300px] md:h-[400px] overflow-hidden">
+            <img
+              alt={project.title}
+              src={project.image}
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute top-4 right-4">
+              <Badge variant="secondary" className="bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm text-xs font-medium">
+                {project.status}
+              </Badge>
+            </div>
+          </div>
+          <CardContent className="p-6 md:p-8 flex-1 flex flex-col">
+            <h3 className="text-sm/4 font-semibold text-muted-foreground">{project.subtitle}</h3>
+            <h3 className="mt-2 text-xl font-medium tracking-tight text-foreground">{project.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground flex-1">
+              {project.description.split('.')[0] + '.'}
+            </p>
+            <motion.div 
+              className="mt-4 inline-flex items-center text-sm font-medium text-berry-500 dark:text-berry-400 group-hover:text-berry-600 dark:group-hover:text-berry-300 transition-colors"
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              Learn more
+              <ArrowUpRight className="ml-1 w-4 h-4" />
+            </motion.div>
+          </CardContent>
+        </Card>
+      </a>
+    </motion.div>
   );
 };
 

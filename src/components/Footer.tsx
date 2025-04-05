@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Grape } from 'lucide-react';
-import React, { useState } from 'react';
+import { Grape, Mail, Github, ArrowUp } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { motion } from "framer-motion";
 
 const navigation = {
   explore: [
@@ -11,7 +14,7 @@ const navigation = {
     { name: 'Team', href: '#team' },
   ],
   resources: [
-    { name: 'Source Code', href: 'https://github.com/orgs/NULLBERRY-STUDIO/repositories' },
+    { name: 'Source Code', href: 'https://github.com/nullberry' },
   ],
   company: [
     { name: 'About', href: '#about' },
@@ -24,25 +27,16 @@ const navigation = {
   social: [
     {
       name: 'GitHub',
-      href: 'https://github.com/orgs/NULLBERRY-STUDIO/repositories',
+      href: 'https://github.com/nullberry',
       icon: (props) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-            clipRule="evenodd"
-          />
-        </svg>
+        <Github className="h-5 w-5" {...props} />
       ),
     },
     {
       name: 'Email',
       href: 'mailto:hello@nullberry.org',
       icon: (props) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-          <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-        </svg>
+        <Mail className="h-5 w-5" {...props} />
       ),
     },
   ],
@@ -51,28 +45,66 @@ const navigation = {
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [isImprintOpen, setIsImprintOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show back-to-top button when scrolling down
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
-    <footer className="border-t border-border py-16 mt-24">
-      <div className="container mx-auto px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+    <footer className="bg-neutral-100 dark:bg-neutral-800 border-t border-neutral-200 dark:border-neutral-700">
+      {/* Main footer content */}
+      <div className="container mx-auto px-6 py-12">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <Link to="/" className="flex items-center space-x-2">
-              <Grape className="h-9 w-9 text-berry-500" />
-              <span className="text-lg font-medium">
-                <span className="text-foreground">Nullberry</span>
-                <span className="text-muted-foreground ml-1">Studio</span>
-              </span>
+            <Link to="/" className="flex items-center space-x-2 group">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <Grape className="h-9 w-9 text-berry-500" />
+              </motion.div>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">Nullberry</span>
             </Link>
-            <p className="text-muted-foreground text-sm max-w-md">
-              An indie software studio dedicated to crafting better software & tools—no subscriptions, no ads, no hidden monetization tricks.
+            <p className="text-sm text-gray-700 dark:text-gray-300 max-w-xs">
+              A small group of friends building weird, useful software with no subscriptions, no ads, and no hidden monetization tricks.
             </p>
             <div className="flex gap-x-6">
               {navigation.social.map((item) => (
-                <a key={item.name} href={item.href} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon aria-hidden="true" className="size-6" />
-                </a>
+                <TooltipProvider key={item.name}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <motion.a 
+                        href={item.href}
+                        whileHover={{ scale: 1.1 }}
+                        className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        <span className="sr-only">{item.name}</span>
+                        <item.icon aria-hidden="true" />
+                      </motion.a>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{item.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               ))}
             </div>
           </div>
@@ -83,35 +115,13 @@ export const Footer = () => {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.explore.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+                      <motion.a 
+                        href={item.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                        whileHover={{ x: 2 }}
+                      >
                         {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-medium text-foreground">Resources</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.resources.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-medium text-foreground">Company</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.company.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
-                        {item.name}
-                      </a>
+                      </motion.a>
                     </li>
                   ))}
                 </ul>
@@ -124,11 +134,14 @@ export const Footer = () => {
                       {item.name === 'Imprint' ? (
                         <Dialog open={isImprintOpen} onOpenChange={setIsImprintOpen}>
                           <DialogTrigger asChild>
-                            <button className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+                            <motion.button 
+                              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                              whileHover={{ x: 2 }}
+                            >
                               Imprint
-                            </button>
+                            </motion.button>
                           </DialogTrigger>
-                          <DialogContent className="sm:max-w-[500px] max-h-[80vh] overflow-y-auto">
+                          <DialogContent className="sm:max-w-[500px] max-h-[80vh] overflow-y-auto bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                             <DialogHeader>
                               <DialogTitle className="text-xl font-bold text-foreground">Impressum</DialogTitle>
                             </DialogHeader>
@@ -169,9 +182,13 @@ export const Footer = () => {
                           </DialogContent>
                         </Dialog>
                       ) : (
-                        <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200">
+                        <motion.a 
+                          href={item.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                          whileHover={{ x: 2 }}
+                        >
                           {item.name}
-                        </a>
+                        </motion.a>
                       )}
                     </li>
                   ))}
@@ -180,15 +197,34 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-border pt-8">
-          <p className="text-sm text-muted-foreground">
-            {currentYear} Nullberry Studio. No rights reserved.
+        <div className="mt-16 border-t border-neutral-200 dark:border-neutral-700 pt-8">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {currentYear} Nullberry. No rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
             Made with care. No tracking, no cookies.
           </p>
         </div>
       </div>
+
+      {/* Back to top button */}
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+        >
+          <Button
+            onClick={scrollToTop}
+            size="icon"
+            variant="outline"
+            className="fixed bottom-8 right-8 h-10 w-10 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur-sm transition-all duration-300 hover:scale-110 z-50"
+          >
+            <ArrowUp className="h-5 w-5" />
+            <span className="sr-only">Back to top</span>
+          </Button>
+        </motion.div>
+      )}
     </footer>
   );
 };
