@@ -161,49 +161,51 @@ export const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-0 top-0 z-40 w-full h-full bg-neutral-100 dark:bg-neutral-800 md:hidden"
+              className="fixed inset-0 top-0 z-40 w-full h-full bg-black bg-opacity-50 dark:bg-opacity-70 md:hidden"
             >
               <div className="container mx-auto px-4 py-24 h-full flex flex-col">
-                <nav className="flex flex-col space-y-8 items-center text-center mt-8">
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 + 0.1 }}
-                    >
-                      <a
-                        href={item.url}
-                        onClick={() => setIsOpen(false)}
-                        className="text-2xl font-medium text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
+                <div className="w-full h-full bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow-lg p-6">
+                  <nav className="flex flex-col space-y-8 items-center text-center mt-8">
+                    {navItems.map((item, index) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 + 0.1 }}
                       >
-                        {item.name}
-                      </a>
-                    </motion.div>
-                  ))}
-                </nav>
+                        <a
+                          href={item.url}
+                          onClick={() => setIsOpen(false)}
+                          className="text-2xl font-medium text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      </motion.div>
+                    ))}
+                  </nav>
 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="mt-auto mb-12 flex flex-col items-center space-y-6"
-                >
-                  <a
-                    href="https://github.com/nullberry"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
-                    onClick={() => setIsOpen(false)}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="mt-auto mb-12 flex flex-col items-center space-y-6"
                   >
-                    <Github className="h-5 w-5" />
-                    <span>GitHub</span>
-                  </a>
+                    <a
+                      href="https://github.com/nullberry"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-gray-900 dark:text-white hover:text-berry-500 dark:hover:text-berry-400 transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Github className="h-5 w-5" />
+                      <span>GitHub</span>
+                    </a>
 
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Made with care. No tracking, no cookies.
-                  </div>
-                </motion.div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      Made with care. No tracking, no cookies.
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
